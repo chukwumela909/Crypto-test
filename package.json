@@ -1,7 +1,7 @@
 {
   "name": "crypto-test",
   "version": "1.0.0",
-  "description": "Test quidax api",
+  "description": "Test Quidax API",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",

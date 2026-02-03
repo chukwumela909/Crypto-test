@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface CryptoData {
   id: string;
   symbol: string;
@@ -113,6 +115,11 @@ const mockCryptoData: CryptoData[] = [
   }
 ];
 
+// Helper function to format currency values
+function formatPrice(price: number): string {
+  return price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
 async function getCryptoData(): Promise<CryptoData[]> {
   try {
     const res = await fetch(
@@ -183,10 +190,13 @@ export default async function Home() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
-                          <img 
+                          <Image 
                             src={crypto.image} 
                             alt={crypto.name}
-                            className="w-8 h-8 rounded-full mr-3"
+                            width={32}
+                            height={32}
+                            className="rounded-full mr-3"
+                            unoptimized
                           />
                           <div>
                             <div className="text-sm font-medium text-white">{crypto.name}</div>
@@ -195,7 +205,7 @@ export default async function Home() {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-white font-medium">
-                        ${crypto.current_price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        ${formatPrice(crypto.current_price)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
                         <span className={crypto.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'}>

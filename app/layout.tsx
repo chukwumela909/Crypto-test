@@ -2,8 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Crypto Test - Quidax API',
-  description: 'A Next.js app testing Quidax cryptocurrency API',
+  title: 'Crypto Test - Market Dashboard',
+  description: 'A Next.js app displaying cryptocurrency market data',
 }
 
 export default function RootLayout({
