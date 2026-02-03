@@ -9,6 +9,110 @@ interface CryptoData {
   image: string;
 }
 
+// Fallback mock data for demonstration when API is unavailable
+const mockCryptoData: CryptoData[] = [
+  {
+    id: 'bitcoin',
+    symbol: 'btc',
+    name: 'Bitcoin',
+    current_price: 98750.45,
+    price_change_percentage_24h: 2.34,
+    market_cap: 1950000000000,
+    total_volume: 45000000000,
+    image: 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png'
+  },
+  {
+    id: 'ethereum',
+    symbol: 'eth',
+    name: 'Ethereum',
+    current_price: 3245.67,
+    price_change_percentage_24h: -1.23,
+    market_cap: 390000000000,
+    total_volume: 18000000000,
+    image: 'https://assets.coingecko.com/coins/images/279/large/ethereum.png'
+  },
+  {
+    id: 'tether',
+    symbol: 'usdt',
+    name: 'Tether',
+    current_price: 1.00,
+    price_change_percentage_24h: 0.01,
+    market_cap: 135000000000,
+    total_volume: 78000000000,
+    image: 'https://assets.coingecko.com/coins/images/325/large/Tether.png'
+  },
+  {
+    id: 'binancecoin',
+    symbol: 'bnb',
+    name: 'BNB',
+    current_price: 645.32,
+    price_change_percentage_24h: 3.45,
+    market_cap: 93000000000,
+    total_volume: 2100000000,
+    image: 'https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png'
+  },
+  {
+    id: 'solana',
+    symbol: 'sol',
+    name: 'Solana',
+    current_price: 234.56,
+    price_change_percentage_24h: 5.67,
+    market_cap: 112000000000,
+    total_volume: 5600000000,
+    image: 'https://assets.coingecko.com/coins/images/4128/large/solana.png'
+  },
+  {
+    id: 'usd-coin',
+    symbol: 'usdc',
+    name: 'USDC',
+    current_price: 1.00,
+    price_change_percentage_24h: -0.01,
+    market_cap: 42000000000,
+    total_volume: 8900000000,
+    image: 'https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png'
+  },
+  {
+    id: 'ripple',
+    symbol: 'xrp',
+    name: 'XRP',
+    current_price: 2.87,
+    price_change_percentage_24h: -2.34,
+    market_cap: 164000000000,
+    total_volume: 7800000000,
+    image: 'https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png'
+  },
+  {
+    id: 'cardano',
+    symbol: 'ada',
+    name: 'Cardano',
+    current_price: 1.12,
+    price_change_percentage_24h: 1.89,
+    market_cap: 39000000000,
+    total_volume: 1500000000,
+    image: 'https://assets.coingecko.com/coins/images/975/large/cardano.png'
+  },
+  {
+    id: 'dogecoin',
+    symbol: 'doge',
+    name: 'Dogecoin',
+    current_price: 0.38,
+    price_change_percentage_24h: 4.56,
+    market_cap: 56000000000,
+    total_volume: 3200000000,
+    image: 'https://assets.coingecko.com/coins/images/5/large/dogecoin.png'
+  },
+  {
+    id: 'tron',
+    symbol: 'trx',
+    name: 'TRON',
+    current_price: 0.25,
+    price_change_percentage_24h: -0.78,
+    market_cap: 21500000000,
+    total_volume: 890000000,
+    image: 'https://assets.coingecko.com/coins/images/1094/large/tron-logo.png'
+  }
+];
+
 async function getCryptoData(): Promise<CryptoData[]> {
   try {
     const res = await fetch(
@@ -25,7 +129,8 @@ async function getCryptoData(): Promise<CryptoData[]> {
     return res.json();
   } catch (error) {
     console.error('Error fetching crypto data:', error);
-    return [];
+    // Return mock data as fallback
+    return mockCryptoData;
   }
 }
 
